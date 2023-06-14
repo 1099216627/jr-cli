@@ -7,6 +7,8 @@ const semver = require("semver");
 const colors = require("colors")
 const pkg = require("../package.json");
 const root = require("root-check")
+const userHome = require("user-home");
+const pathExists = require("path-exists").sync;
 const constant = require("./const");
 
 function core(args) {
@@ -14,6 +16,7 @@ function core(args) {
         checkPkgVersion();
         checkNodeVersion();
         rootDegradation();
+        checkUserHome();
     }catch (e) {
         log.error(e.message)
     }
@@ -37,4 +40,9 @@ function rootDegradation(){
     // 当root权限开启时自动降级
     root();
 }
-
+// 检查用户主目录
+function checkUserHome () {
+    if(!userHome || !pathExists(userHome)){
+        throw new Error(colors.red("当前用户主目录不存在"))
+    }
+}

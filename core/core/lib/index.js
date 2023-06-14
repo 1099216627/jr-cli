@@ -10,4 +10,5 @@ function core(args) {
 
 function checkPkgVersion () {
     log.info("version",`当前版本号为${pkg.version}`)
+    console.log("发布测试代码")
 }

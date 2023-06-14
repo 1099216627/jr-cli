@@ -2,7 +2,7 @@
 # Logs
 logs
 *.log
-npm-debug.log*
+index-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
@@ -49,8 +49,8 @@ web_modules/
 # TypeScript cache
 *.tsbuildinfo
 
-# Optional npm cache directory
-.npm
+# Optional index cache directory
+.index
 
 # Optional eslint cache
 .eslintcache
@@ -67,7 +67,7 @@ web_modules/
 # Optional REPL history
 .node_repl_history
 
-# Output of 'npm pack'
+# Output of 'index pack'
 *.tgz
 
 # Yarn Integrity file

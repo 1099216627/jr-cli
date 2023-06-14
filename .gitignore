@@ -135,4 +135,5 @@ lerna-debug.log
 .idea
 package-lock.json
 
-/core/core/node_modules/
+/core/*/node_modules/
+/utils/*/node_modules/

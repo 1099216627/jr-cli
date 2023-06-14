@@ -1,6 +1,6 @@
 {
   "name": "@jr-cli/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "脚手架核心代码",
   "author": "fengliushijie <1099216627@qq.com>",
   "homepage": "https://github.com/1099216627/jr-cli/tree/master/packages/core#readme",

@@ -1,0 +1,31 @@
+{
+  "name": "@jr-cli/npm",
+  "version": "0.0.2",
+  "description": "npm操作相关工具",
+  "author": "fengliushijie <1099216627@qq.com>",
+  "homepage": "https://github.com/1099216627/jr-cli/tree/master/core/npm#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1099216627/jr-cli.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/1099216627/jr-cli/issues"
+  },
+  "dependencies": {
+    "@jr-cli/http": "../http",
+    "semver": "^7.5.1",
+    "url-join": "^4.0.1"
+  }
+}

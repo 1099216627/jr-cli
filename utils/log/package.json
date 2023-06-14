@@ -13,6 +13,9 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/1099216627/jr-cli.git"
@@ -22,5 +25,8 @@
   },
   "bugs": {
     "url": "https://github.com/1099216627/jr-cli/issues"
+  },
+  "dependencies": {
+    "npmlog": "^7.0.1"
   }
 }

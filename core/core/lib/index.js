@@ -10,27 +10,32 @@ const colors = require("colors")
 const root = require("root-check")
 const userHome = require("user-home");
 const pathExists = require("path-exists").sync;
-const minimist = require("minimist");
 const env = require("dotenv");
 const commander = require("commander")
 const program = new commander.Command();
 const constant = require("./const");
 const pkg = require("../package.json");
-const init = require("@jr-cli/init");
+const exec = require("@jr-cli/exec")
 
 
 async function core(args) {
     try {
-        checkPkgVersion();
-        checkNodeVersion();
-        rootDegradation();
-        checkUserHome();
-        checkEnv();
-        await checkGlobalUpdate();
+        await prepare();
         registerCommand();
     } catch (e) {
         log.error(e.message)
+        if(program.getOptionValue('debug')){
+            log.error(e)
+        }
     }
+}
+
+async function prepare(){
+    checkPkgVersion();
+    rootDegradation();
+    checkUserHome();
+    checkEnv();
+    await checkGlobalUpdate();
 }
 
 // 检查脚手架版本
@@ -38,14 +43,6 @@ function checkPkgVersion() {
     log.info("version", `当前版本号为${pkg.version}`)
 }
 
-// 检查node版本
-function checkNodeVersion() {
-    const curNodeVersion = process.version;
-    const lowestNodeVersion = constant.LOWEST_NODE_VERSION;
-    if (semver.lt(curNodeVersion, lowestNodeVersion)) {
-        throw new Error(colors.red(`Node版本过低，请升级 ${lowestNodeVersion} 以上的版本`))
-    }
-}
 
 // root权限降级
 function rootDegradation() {
@@ -102,21 +99,28 @@ function registerCommand() {
     program
         .name(Object.keys(pkg.bin)[0])
         .usage("<command> [options]")
-        .option("-d,--debug", "开启调试模式", false)
-        .version(pkg.version);
+        .version(pkg.version)
+        .option("-d, --debug", "开启调试模式", false)
+        .option("-tp, --targetPath <targetPath>", "是否指定本地调试文件", "")
+
     // 命令注册
     program
         .command("init [projectName]")
-        .option("-f,--force", "当前目录存在文件，是否强制初始化？")
-        .action(init)
+        .option("-f, --force", "当前目录存在文件，是否强制初始化？")
+        .action(exec)
     // 监听debug命令
-    program.on("option:debug", function () {
-        if (program.debug) {
+    program.on("option:debug", function (debug) {
+        if (program.getOptionValue("debug")) {
             process.env.LOG_LEVEL = "verbose";
         } else {
             process.env.LOG_LEVEL = "info";
         }
         log.level = process.env.LOG_LEVEL;
+    })
+
+    // 指定targetPath
+    program.on("option:targetPath",function (path) {
+        process.env.CLI_TARGET_PATH = path;
     })
     program.on("command:*", function (obj) {
         log.error(colors.red(`无效的命令：${obj[0]}`))

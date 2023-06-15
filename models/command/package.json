@@ -1,9 +1,9 @@
 {
-  "name": "@jr-cli/utils",
+  "name": "@jr-cli/command",
   "version": "0.0.2",
   "description": "> TODO: description",
   "author": "fengliushijie <1099216627@qq.com>",
-  "homepage": "https://github.com/1099216627/jr-cli/tree/master/utils/utils#readme",
+  "homepage": "https://github.com/1099216627/jr-cli/tree/master/models/command#readme",
   "license": "ISC",
   "main": "lib/index.js",
   "directories": {
@@ -13,6 +13,9 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/1099216627/jr-cli.git"
@@ -22,5 +25,11 @@
   },
   "bugs": {
     "url": "https://github.com/1099216627/jr-cli/issues"
+  },
+  "dependencies": {
+    "@jr-cli/log": "../../utils/log",
+    "@jr-cli/utils": "../../utils/utils",
+    "colors": "^1.4.0",
+    "semver": "^7.5.1"
   }
 }

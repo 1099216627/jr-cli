@@ -25,5 +25,9 @@
   },
   "bugs": {
     "url": "https://github.com/1099216627/jr-cli/issues"
+  },
+  "dependencies": {
+    "@jr-cli/command": "../../models/command",
+    "@jr-cli/log": "../../utils/log"
   }
 }

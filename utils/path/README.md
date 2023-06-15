@@ -1,11 +1,11 @@
-# `path`
+# `index`
 
 > TODO: description
 
 ## Usage
 
 ```
-const path = require('path');
+const index = require('index');
 
 // TODO: DEMONSTRATE API
 ```

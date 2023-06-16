@@ -1,6 +1,6 @@
 {
   "name": "@jr-cli/npm",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "npm操作相关工具",
   "author": "fengliushijie <1099216627@qq.com>",
   "homepage": "https://github.com/1099216627/jr-cli/tree/master/core/npm#readme",

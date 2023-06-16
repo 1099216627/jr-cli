@@ -1,20 +1,14 @@
 {
-  "name": "@jr-cli/core",
+  "name": "@jr-cli/npm",
   "version": "0.0.5",
-  "description": "脚手架核心代码",
+  "description": "npm操作相关工具",
   "author": "fengliushijie <1099216627@qq.com>",
-  "homepage": "https://github.com/1099216627/jr-cli/tree/master/packages/core#readme",
+  "homepage": "https://github.com/1099216627/jr-cli/tree/master/core/npm#readme",
   "license": "ISC",
   "main": "lib/index.js",
-  "bin": {
-    "jr-cli": "bin/index.js"
-  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "files": [
     "lib"
@@ -23,6 +17,9 @@
     "type": "git",
     "url": "git+https://github.com/1099216627/jr-cli.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
@@ -30,18 +27,9 @@
     "url": "https://github.com/1099216627/jr-cli/issues"
   },
   "dependencies": {
-    "@jr-cli/exec": "^0.0.5",
-    "@jr-cli/init": "^0.0.5",
-    "@jr-cli/log": "^0.0.5",
-    "@jr-cli/npm": "^0.0.5",
-    "colors": "^1.4.0",
-    "commander": "^10.0.1",
-    "dotenv": "^16.1.4",
-    "import-local": "^3.1.0",
-    "path-exists": "^4.0.0",
-    "root-check": "^1.0.0",
+    "@jr-cli/http": "^0.0.5",
     "semver": "^7.5.1",
-    "user-home": "^3.0.0"
+    "url-join": "^4.0.1"
   },
   "gitHead": "f33bba4722cceaf5b8dea63e8c8f714e247f67d1"
 }

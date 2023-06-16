@@ -1,9 +1,9 @@
 {
-  "name": "@jr-cli/log",
+  "name": "@jr-cli/path",
   "version": "0.0.5",
-  "description": "终端日志打印工具",
+  "description": "> TODO: description",
   "author": "fengliushijie <1099216627@qq.com>",
-  "homepage": "https://github.com/1099216627/jr-cli/tree/master/packages/log#readme",
+  "homepage": "https://github.com/1099216627/jr-cli/tree/master/utils/path#readme",
   "license": "ISC",
   "main": "lib/index.js",
   "directories": {
@@ -25,9 +25,6 @@
   },
   "bugs": {
     "url": "https://github.com/1099216627/jr-cli/issues"
-  },
-  "dependencies": {
-    "npmlog": "^7.0.1"
   },
   "gitHead": "f33bba4722cceaf5b8dea63e8c8f714e247f67d1"
 }

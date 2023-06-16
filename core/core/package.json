@@ -30,10 +30,10 @@
     "url": "https://github.com/1099216627/jr-cli/issues"
   },
   "dependencies": {
-    "@jr-cli/exec": "../exec",
-    "@jr-cli/init": "../../commands/init",
-    "@jr-cli/log": "../../utils/log",
-    "@jr-cli/npm": "../../utils/npm",
+    "@jr-cli/exec": "^0.0.3",
+    "@jr-cli/init": "^0.0.3",
+    "@jr-cli/log": "^0.0.3",
+    "@jr-cli/npm": "^0.0.3",
     "colors": "^1.4.0",
     "commander": "^10.0.1",
     "dotenv": "^16.1.4",
@@ -42,5 +42,6 @@
     "root-check": "^1.0.0",
     "semver": "^7.5.1",
     "user-home": "^3.0.0"
-  }
+  },
+  "gitHead": "f33bba4722cceaf5b8dea63e8c8f714e247f67d1"
 }

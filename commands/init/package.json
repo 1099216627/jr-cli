@@ -27,10 +27,11 @@
     "url": "https://github.com/1099216627/jr-cli/issues"
   },
   "dependencies": {
-    "@jr-cli/command": "../../models/command",
-    "@jr-cli/http": "../../utils/http",
-    "@jr-cli/log": "../../utils/log",
+    "@jr-cli/command": "^0.0.3",
+    "@jr-cli/http": "^0.0.3",
+    "@jr-cli/log": "^0.0.3",
     "fs-extra": "^11.1.1",
     "inquirer": "7.3"
-  }
+  },
+  "gitHead": "f33bba4722cceaf5b8dea63e8c8f714e247f67d1"
 }

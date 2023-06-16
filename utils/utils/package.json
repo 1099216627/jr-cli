@@ -17,10 +17,14 @@
     "type": "git",
     "url": "git+https://github.com/1099216627/jr-cli.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/1099216627/jr-cli/issues"
-  }
+  },
+  "gitHead": "f33bba4722cceaf5b8dea63e8c8f714e247f67d1"
 }

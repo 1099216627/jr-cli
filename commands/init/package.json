@@ -1,6 +1,6 @@
 {
   "name": "@jr-cli/init",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "初始化注册脚手架",
   "author": "fengliushijie <1099216627@qq.com>",
   "homepage": "https://github.com/1099216627/jr-cli/tree/master/commands/init#readme",
@@ -27,9 +27,9 @@
     "url": "https://github.com/1099216627/jr-cli/issues"
   },
   "dependencies": {
-    "@jr-cli/command": "^0.0.3",
-    "@jr-cli/http": "^0.0.3",
-    "@jr-cli/log": "^0.0.3",
+    "@jr-cli/command": "^0.0.4",
+    "@jr-cli/http": "^0.0.4",
+    "@jr-cli/log": "^0.0.4",
     "fs-extra": "^11.1.1",
     "inquirer": "7.3"
   },

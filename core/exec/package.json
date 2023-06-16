@@ -1,6 +1,6 @@
 {
   "name": "@jr-cli/exec",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "> TODO: description",
   "author": "fengliushijie <1099216627@qq.com>",
   "homepage": "https://github.com/1099216627/jr-cli/tree/master/core/exec#readme",
@@ -27,8 +27,8 @@
     "url": "https://github.com/1099216627/jr-cli/issues"
   },
   "dependencies": {
-    "@jr-cli/log": "^0.0.3",
-    "@jr-cli/package": "^0.0.3"
+    "@jr-cli/log": "^0.0.4",
+    "@jr-cli/package": "^0.0.4"
   },
   "gitHead": "f33bba4722cceaf5b8dea63e8c8f714e247f67d1"
 }

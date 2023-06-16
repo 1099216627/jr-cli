@@ -1,6 +1,6 @@
 {
   "name": "@jr-cli/package",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "> TODO: description",
   "author": "fengliushijie <1099216627@qq.com>",
   "homepage": "https://github.com/1099216627/jr-cli/tree/master/core/package#readme",
@@ -27,9 +27,9 @@
     "url": "https://github.com/1099216627/jr-cli/issues"
   },
   "dependencies": {
-    "@jr-cli/npm": "^0.0.3",
-    "@jr-cli/path": "^0.0.3",
-    "@jr-cli/utils": "^0.0.3",
+    "@jr-cli/npm": "^0.0.4",
+    "@jr-cli/path": "^0.0.4",
+    "@jr-cli/utils": "^0.0.4",
     "fs-extra": "^11.1.1",
     "npminstall": "^7.9.0",
     "path-exists": "^4.0.0",

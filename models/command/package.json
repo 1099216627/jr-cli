@@ -1,6 +1,6 @@
 {
   "name": "@jr-cli/command",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "> TODO: description",
   "author": "fengliushijie <1099216627@qq.com>",
   "homepage": "https://github.com/1099216627/jr-cli/tree/master/models/command#readme",
@@ -27,8 +27,8 @@
     "url": "https://github.com/1099216627/jr-cli/issues"
   },
   "dependencies": {
-    "@jr-cli/log": "^0.0.3",
-    "@jr-cli/utils": "^0.0.3",
+    "@jr-cli/log": "^0.0.4",
+    "@jr-cli/utils": "^0.0.4",
     "colors": "^1.4.0",
     "semver": "^7.5.1"
   },

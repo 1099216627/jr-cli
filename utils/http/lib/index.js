@@ -4,8 +4,8 @@ const axios = require("axios");
 const guard = require("./guard");
 
 class Service {
-    constructor() {
-        this.instance = this.init();
+    constructor(config) {
+        this.instance = this.init(config);
         this.createGuard(this.instance);
     }
 
@@ -13,14 +13,16 @@ class Service {
         return this.instance;
     }
 
-    init(baseURL = ""){
-        return axios.create({
-            baseURL,
+    init(config){
+        const newConfig = {
+            baseURL:"",
             headers:{
                 "Content-Type":"application/json"
             },
-            timeout:10000
-        })
+            timeout:10000,
+            ...config,
+        }
+        return axios.create(config)
     }
 
     createGuard(instance){
@@ -28,5 +30,5 @@ class Service {
     }
 }
 
-module.exports = new Service();
+module.exports = Service;
 

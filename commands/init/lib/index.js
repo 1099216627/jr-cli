@@ -6,11 +6,14 @@ const log = require("@jr-cli/log")
 const fs = require("fs");
 const fse = require("fs-extra");
 const inquirer = require("inquirer")
+const userHome = require("user-home");
+const Pkg = require("@jr-cli/package");
 
 const TYPE_PROJECT = "project";
 const TYPE_COMPONENT = "component";
-
 const getProjectTemplateApi = require("./getProjectTemplate")
+const path = require("path");
+
 
 class InitCommand extends Command {
     constructor(argv) {
@@ -27,9 +30,8 @@ class InitCommand extends Command {
     async exec() {
         try {
             // 1.准备阶段
-            const projectInfo = await this.prepare();
-            if (projectInfo) {
-                console.log(projectInfo)
+            this.projectInfo = await this.prepare();
+            if (this.projectInfo) {
                 // 2.下载模板
                 this.downloadTemplate()
                 // 3.安装模板
@@ -43,41 +45,81 @@ class InitCommand extends Command {
     async prepare() {
         // 0.判断项目模板是否存在
         const template = await getProjectTemplateApi()
-        console.log(template)
+        if (!template || template.length === 0) {
+            throw new Error("项目模板不存在")
+        }
+        this.template = template;
+        console.log(this.template)
         const localPath = process.cwd();
-        // 1.判断当前目录是否为空
-        if (this.isNotEmptyDir(localPath)) {
-            let isContinue = false;
-            if (!this.force) {
-                // 1.1.询问是否继续创建
-                isContinue = await inquirer.prompt({
-                    type: "confirm",
-                    message: "当前文件夹不为空，是否继续创建项目？",
-                    name: "isContinue",
-                    default: false
-                }).isContinue;
-            }
-            if (isContinue || this.force) {
-                // 二次确认是否清空
-                const {confirm} = await inquirer.prompt({
-                    type: "confirm",
-                    name: "confirm",
-                    default: false,
-                    message: "是否确认清空当前目录？"
-
-                })
-                // 2.是否强制更新
-                if (confirm) {
-                    fse.removeSync(localPath);
-                }
-            }
+        const hasFile = this.isNotEmptyDir(localPath)
+        let removeFile = false;
+        if (hasFile) {
+            removeFile = await this.doClear()
+        }
+        if (removeFile || this.force) {
+            removeFile = await this.confirmClear()
+        }
+        if (removeFile) {
+            // 清空目录
+            fse.removeSync(localPath);
+        }
+        if (hasFile && !removeFile) {
+            return
         }
         // 3.选择创建项目或组件
         // 4.获取项目基本信息
         return this.getProjectInfo()
     }
 
-    downloadTemplate(){}
+
+    async doClear() {
+        const clear = await inquirer.prompt({
+            type: "confirm",
+            message: "当前文件夹不为空，是否继续创建项目？",
+            name: "isClear",
+            default: false
+        });
+        return clear.isClear
+    }
+
+    async confirmClear() {
+        const confirm = await inquirer.prompt({
+            type: "confirm",
+            message: "是否确认清空当前目录？此操作将有一定风险！",
+            name: "isClear",
+            default: false
+        });
+        return confirm.isClear
+    }
+
+    generateTemplateChoice() {
+        return this.template.map(t => {
+            return {
+                value: t.npm_name,
+                name: t.name
+            }
+        })
+    }
+
+    async downloadTemplate() {
+        console.log(this.template, this.projectInfo)
+        const {projectTemplate} = this.projectInfo;
+        const templateInfo = this.template.find(t => t.npm_name === projectTemplate)
+        const targetPath = path.resolve(userHome,".jr-cli","template")
+        const storeDir = path.resolve(userHome,".jr-cli","template","node_modules")
+        const {npm_name,version} = templateInfo;
+        const templateNpm = new Pkg({
+            targetPath,
+            storeDir,
+            pkgName:npm_name,
+            pkgVersion:version
+        })
+        if(!await templateNpm.exists()){
+            await templateNpm.install()
+        }else {
+            await templateNpm.update()
+        }
+    }
 
     async getProjectInfo() {
         let projectInfo = {};
@@ -102,12 +144,12 @@ class InitCommand extends Command {
                     validate: function (v) {
                         const done = this.async();
                         setTimeout(() => {
-                            if(!/^[a-zA-Z0-9-_]+$/.test(v)){
+                            if (!/^[a-zA-Z0-9-_]+$/.test(v)) {
                                 done("请输入合法项目名称")
                                 return
                             }
-                            done(null,true)
-                        },0)
+                            done(null, true)
+                        }, 0)
                     },
                 },
                 {
@@ -118,20 +160,26 @@ class InitCommand extends Command {
                     validate: function (v) {
                         const done = this.async();
                         setTimeout(() => {
-                            if(!/^\d+\.\d+\.\d+(-\S*)?$/.test(v)){
+                            if (!/^\d+\.\d+\.\d+(-\S*)?$/.test(v)) {
                                 done("请输入合法版本号")
                                 return
                             }
-                            done(null,true)
-                        },0)
+                            done(null, true)
+                        }, 0)
                     },
                 },
+                {
+                    type: "list",
+                    message: "请选择项目模板",
+                    name: "projectTemplate",
+                    choices: this.generateTemplateChoice()
+                }
             ])
             projectInfo = {
                 type,
                 ...project
             }
-        }else if(type === TYPE_COMPONENT){
+        } else if (type === TYPE_COMPONENT) {
 
         }
 

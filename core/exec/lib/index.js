@@ -32,9 +32,11 @@ async function exec() {
             storeDir
         })
         if (await pkg.exists()) {
+            log.verbose("开始更新依赖")
             // 更新pkg
             await pkg.update();
         } else {
+            log.verbose("开始安装依赖")
             // 安装pkg
             await pkg.install();
         }

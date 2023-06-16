@@ -30,8 +30,10 @@
     "@jr-cli/command": "^0.0.4",
     "@jr-cli/http": "^0.0.4",
     "@jr-cli/log": "^0.0.4",
+    "@jr-cli/package": "../../models/package",
     "fs-extra": "^11.1.1",
-    "inquirer": "7.3"
+    "inquirer": "7.3",
+    "user-home": "^3.0.0"
   },
   "gitHead": "f33bba4722cceaf5b8dea63e8c8f714e247f67d1"
 }

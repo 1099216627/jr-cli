@@ -2,15 +2,16 @@
 
 const urlJoin = require("url-join");
 const semver = require("semver");
-const axiosInstance = require("@jr-cli/http").getInstance();
+const Request = require("@jr-cli/http");
 
 async function getNpmVersions (pkgName,registry) {
+    let httpInstance = new Request().getInstance();
     if (!pkgName) {
         return null;
     }
     registry = registry || getDefaultRegistry();
     const finallyUrl = urlJoin(registry, pkgName);
-    const result = await axiosInstance.get(finallyUrl);
+    const result = await httpInstance.get(finallyUrl);
     return getPackageVersions(result);
 }
 
@@ -24,7 +25,7 @@ async function getPkgInfoByNpm(pkgName,curVersion, registry) {
 }
 
 // 获取线上源地址，默认官方
-function getDefaultRegistry(isOrigin = false) {
+function getDefaultRegistry(isOrigin = true) {
     return isOrigin ? "https://registry.npmjs.org" : "https://registry.npmmirror.com/";
 }
 

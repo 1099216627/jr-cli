@@ -6,7 +6,7 @@ const fse = require("fs-extra");
 const inquirer = require("inquirer")
 const userHome = require("user-home");
 const Pkg = require("@jr-cli/package");
-const {spinner} = import("@jr-cli/utils");
+// const {spinner} = require("@jr-cli/utils");
 
 const TYPE_PROJECT = "project";
 const TYPE_COMPONENT = "component";
@@ -113,12 +113,13 @@ class InitCommand extends Command {
             pkgVersion:version
         })
         if(!await templateNpm.exists()){
-            const sp = spinner();
+            // const sp = spinner();
             await templateNpm.install()
-            await new Promise(resolve => setTimeout(resolve,1000))
-            sp.stop(true)
+            // sp.stop(true)
+            log.info("下载模板成功")
         }else {
             await templateNpm.update()
+            log.info("更新模板成功")
         }
     }
 

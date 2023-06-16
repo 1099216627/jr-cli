@@ -1,6 +1,4 @@
 'use strict';
-
-
 const Command = require("@jr-cli/command");
 const log = require("@jr-cli/log")
 const fs = require("fs");
@@ -8,6 +6,7 @@ const fse = require("fs-extra");
 const inquirer = require("inquirer")
 const userHome = require("user-home");
 const Pkg = require("@jr-cli/package");
+const {spinner} = import("@jr-cli/utils");
 
 const TYPE_PROJECT = "project";
 const TYPE_COMPONENT = "component";
@@ -49,7 +48,6 @@ class InitCommand extends Command {
             throw new Error("项目模板不存在")
         }
         this.template = template;
-        console.log(this.template)
         const localPath = process.cwd();
         const hasFile = this.isNotEmptyDir(localPath)
         let removeFile = false;
@@ -101,8 +99,8 @@ class InitCommand extends Command {
         })
     }
 
+    // 模板下载
     async downloadTemplate() {
-        console.log(this.template, this.projectInfo)
         const {projectTemplate} = this.projectInfo;
         const templateInfo = this.template.find(t => t.npm_name === projectTemplate)
         const targetPath = path.resolve(userHome,".jr-cli","template")
@@ -115,7 +113,10 @@ class InitCommand extends Command {
             pkgVersion:version
         })
         if(!await templateNpm.exists()){
+            const sp = spinner();
             await templateNpm.install()
+            await new Promise(resolve => setTimeout(resolve,1000))
+            sp.stop(true)
         }else {
             await templateNpm.update()
         }

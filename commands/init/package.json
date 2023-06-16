@@ -31,6 +31,7 @@
     "@jr-cli/http": "^0.0.4",
     "@jr-cli/log": "^0.0.4",
     "@jr-cli/package": "../../models/package",
+    "@jr-cli/utils": "../../utils/utils",
     "fs-extra": "^11.1.1",
     "inquirer": "7.3",
     "user-home": "^3.0.0"

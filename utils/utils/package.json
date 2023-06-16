@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/1099216627/jr-cli/issues"
   },
-  "gitHead": "f33bba4722cceaf5b8dea63e8c8f714e247f67d1"
+  "gitHead": "f33bba4722cceaf5b8dea63e8c8f714e247f67d1",
+  "dependencies": {
+    "cli-spinner": "^0.2.10"
+  }
 }

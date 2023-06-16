@@ -1,6 +1,6 @@
 {
   "name": "@jr-cli/npm",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "npm操作相关工具",
   "author": "fengliushijie <1099216627@qq.com>",
   "homepage": "https://github.com/1099216627/jr-cli/tree/master/core/npm#readme",
@@ -27,7 +27,7 @@
     "url": "https://github.com/1099216627/jr-cli/issues"
   },
   "dependencies": {
-    "@jr-cli/http": "^0.0.4",
+    "@jr-cli/http": "^0.0.5",
     "semver": "^7.5.1",
     "url-join": "^4.0.1"
   },

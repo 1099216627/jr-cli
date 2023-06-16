@@ -7,7 +7,7 @@ const path = require("path");
 const cp = require("child_process")
 
 const SETTINGS = {
-    init: "@imooc-cli/init"
+    init: "@jr-cli/init"
 }
 const CACHE_DIR = "dependencies"
 
@@ -32,11 +32,9 @@ async function exec() {
             storeDir
         })
         if (await pkg.exists()) {
-            console.log('update')
             // 更新pkg
             await pkg.update();
         } else {
-            console.log('install')
             // 安装pkg
             await pkg.install();
         }

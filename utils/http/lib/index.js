@@ -13,9 +13,9 @@ class Service {
         return this.instance;
     }
 
-    init(){
+    init(baseURL = ""){
         return axios.create({
-            baseURL:"",
+            baseURL,
             headers:{
                 "Content-Type":"application/json"
             },

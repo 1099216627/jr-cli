@@ -28,6 +28,9 @@
   },
   "dependencies": {
     "@jr-cli/command": "../../models/command",
-    "@jr-cli/log": "../../utils/log"
+    "@jr-cli/log": "../../utils/log",
+    "@jr-cli/http": "../../utils/http",
+    "fs-extra": "^11.1.1",
+    "inquirer": "7.3"
   }
 }

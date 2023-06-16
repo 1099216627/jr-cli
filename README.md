@@ -11,6 +11,7 @@
 - minimist 参数解析
 - commander 脚手架注册
 - path-exists
+- inquirer 命令行交互
 
 ## 分包策略
 - core核心代码库
@@ -33,3 +34,4 @@ LOG_LEVEL 日志等级
 7. 全局参数注册 ✅
 8. 脚手架初始化 ✅
 9. 动态init   ✅
+10. 模版下载和安装
